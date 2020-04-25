@@ -215,7 +215,7 @@ const template = (content, currentDate) => {
                           .subtract(1, 'days')
                           .format(
                             'YYYY/MMMM/D'
-                          )}.html" target="_blank"  style="text-decoration: none; color:${LINK_COLOR};">See previous → </a>
+                          )}.html" style="text-decoration: none; color:${LINK_COLOR};">See previous → </a>
                       </td>
                     </tr>
                   </table>
