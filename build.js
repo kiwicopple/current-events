@@ -173,7 +173,7 @@ const template = (content, currentDate) => {
                     </tr>
                     <tr>
                       <td style="font-family:'Avenir','Helvetica Neue',Helvetica,'Lucida Grande',sans-serif; font-size: 14px; vertical-align: top; ">
-                        Want to support Wikipedia? <a href="https://donate.wikimedia.org/wiki/Ways_to_Give"  style="text-decoration: none;color:${LINK_COLOR};" target="_blank">Donate →</a>
+                        Support Wikipedia? <a href="https://donate.wikimedia.org/wiki/Ways_to_Give"  style="text-decoration: none;color:${LINK_COLOR};" target="_blank">Donate →</a>
                       </td>
                     </tr>
                     <tr>
