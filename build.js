@@ -205,7 +205,7 @@ const template = (content, currentDate) => {
                       </td>
                     </tr>
                     <tr>
-                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+                      <td style="font-family:'Avenir','Helvetica Neue',Helvetica,'Lucida Grande',sans-serif; font-size: 14px; vertical-align: top;">
                         Made by <a href="https://paul.copplest.one" style="text-decoration: none; color: ${LINK_COLOR}; ">kiwicopple</a> to increase the spread of factual news.
                       </td>
                     </tr>
