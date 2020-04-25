@@ -3,6 +3,7 @@ const cheerio = require('cheerio')
 const moment = require('moment')
 const fs = require('fs')
 const LINK_COLOR = '#2a2a8d'
+const SUBSCRIBE_LINK = 'https://cdn.forms-content.sg-form.com/d622e40e-8702-11ea-a43d-4eea9c5a99b3'
 
 const currentMonth = moment().format('MMMM_YYYY')
 const URL_TO_PARSE = `https://en.wikipedia.org/wiki/Portal:Current_events/${currentMonth}`
@@ -177,7 +178,7 @@ const template = (content, currentDate) => {
                     </tr>
                     <tr>
                       <td style="font-family:'Avenir','Helvetica Neue',Helvetica,'Lucida Grande',sans-serif; font-size: 14px; vertical-align: top; ">
-                        Not yet a subscriber? <a href="https://donate.wikimedia.org/wiki/Ways_to_Give"  style="text-decoration: none;color:${LINK_COLOR};" target="_blank">Subscribe → </a>
+                        Not yet a subscriber? <a href="${SUBSCRIBE_LINK}"  style="text-decoration: none;color:${LINK_COLOR};" target="_blank">Subscribe → </a>
                       </td>
                     </tr>
                   </table>
@@ -229,7 +230,7 @@ const template = (content, currentDate) => {
               <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: #3498db; border-radius: 5px; text-align: center;"> 
-                        <a href="http://htmlemail.io" target="_blank" style="display: inline-block; color: #ffffff; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
+                        <a href="${SUBSCRIBE_LINK}" target="_blank" style="display: inline-block; color: #ffffff; background-color: #3498db; border: solid 1px #3498db; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #3498db;">
                             Like this? Subscribe → 
                         </a> 
                     </td>
