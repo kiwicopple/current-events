@@ -282,9 +282,13 @@ request(URL_TO_PARSE, async (err, response, body) => {
   // If you want an exclusive end date (half-open interval)
   for (var m = moment(a); m.isBefore(b); m.add(1, 'days')) {
     const currentDayEvents = $('.description', `div#${m.format('YYYY_MMMM_d')}`)
-    const directory = `./src/${m.format('YYYY/MMMM')}`
+    const directory = `./public/${m.format('YYYY/MMMM')}`
     const filename = `${m.format('D')}.html`
     let created = await makeDirectory(directory)
     fs.writeFileSync(`${directory}/${filename}`, template(currentDayEvents.html(), m))
+    if (m.isSame(b, 'day')) {
+      console.log('index')
+      fs.writeFileSync(`./public/index.html`, template(currentDayEvents.html(), m))
+    }
   }
 })
