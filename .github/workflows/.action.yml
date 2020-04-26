@@ -1,7 +1,7 @@
 name: 'Current Events Bot'
 
 on:
-  # push:
+  push:
   schedule:
     - cron: '0 23 * * *'
 
@@ -26,3 +26,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.CURRENT_EVENTS_TOKEN }}
+      - run: SENDGRID_API_KEY=${{ secrets.SENDGRID_API_KEY }} npm run send
