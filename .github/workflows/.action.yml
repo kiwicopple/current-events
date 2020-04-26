@@ -1,7 +1,7 @@
 name: 'Current Events Bot'
 
 on:
-  push:
+  # push:
   schedule:
     - cron: '0 23 * * *'
 
