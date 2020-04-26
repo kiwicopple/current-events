@@ -275,7 +275,7 @@ request(URL_TO_PARSE, async (err, response, body) => {
   styleLists($)
   styleLinks($)
 
-  var a = moment('2020-04-01')
+  var a = moment.startOf('month').format('YYYY-MM-DD')
   var b = moment().subtract(1, 'day')
 
   // If you want an exclusive end date (half-open interval)
