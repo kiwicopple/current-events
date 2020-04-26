@@ -1,0 +1,19 @@
+name: 'Current Events Bot'
+
+on:
+  push:
+  schedule:
+    - cron: '0 23 * * *'
+
+jobs:
+  bot:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Get Date'
+        run: echo "::set-env name=REPORT_DATE::$(TZ=':Pacific/Samoa' date '+%Y-%m-%d %T')"
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: npm run build --if-present
