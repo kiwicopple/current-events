@@ -275,18 +275,18 @@ request(URL_TO_PARSE, async (err, response, body) => {
   styleLists($)
   styleLinks($)
 
-  var a = moment.startOf('month').format('YYYY-MM-DD')
+  var a = moment().startOf('month').format('YYYY-MM-DD')
   var b = moment().subtract(1, 'day')
 
   // If you want an exclusive end date (half-open interval)
   for (var m = moment(a); m.isBefore(b); m.add(1, 'days')) {
-    const currentDayEvents = $('.description', `div#${m.format('YYYY_MMMM_d')}`)
+    const currentDayEvents = $('.description', `div#${m.format('YYYY_MMMM_D')}`)
     const directory = `./public/${m.format('YYYY/MMMM')}`
     const filename = `${m.format('D')}.html`
     let created = await makeDirectory(directory)
     fs.writeFileSync(`${directory}/${filename}`, template(currentDayEvents.html(), m))
     if (m.isSame(b, 'day')) {
-      console.log('index')
+      console.log('index', `div#${m.format('YYYY_MMMM_d')}`)
       fs.writeFileSync(`./public/index.html`, template(currentDayEvents.html(), m))
     }
   }
