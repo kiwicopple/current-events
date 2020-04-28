@@ -5,7 +5,8 @@ const fs = require('fs')
 const LINK_COLOR = '#2a2a8d'
 const SUBSCRIBE_LINK = 'https://cdn.forms-content.sg-form.com/d622e40e-8702-11ea-a43d-4eea9c5a99b3'
 
-const currentMonth = moment().format('MMMM_YYYY')
+const YESTERDAY = moment().subtract(1, 'day')
+const currentMonth = YESTERDAY.format('MMMM_YYYY')
 const URL_TO_PARSE = `https://en.wikipedia.org/wiki/Portal:Current_events/${currentMonth}`
 
 const cleanseLinks = ($) => {
@@ -276,16 +277,15 @@ request(URL_TO_PARSE, async (err, response, body) => {
   styleLinks($)
 
   var a = moment().startOf('month').format('YYYY-MM-DD')
-  var b = moment().subtract(1, 'day')
 
   // If you want an exclusive end date (half-open interval)
-  for (var m = moment(a); m.isBefore(b); m.add(1, 'days')) {
+  for (var m = moment(a); m.isBefore(YESTERDAY); m.add(1, 'days')) {
     const currentDayEvents = $('.description', `div#${m.format('YYYY_MMMM_D')}`)
     const directory = `./public/${m.format('YYYY/MMMM')}`
     const filename = `${m.format('D')}.html`
     let created = await makeDirectory(directory)
     fs.writeFileSync(`${directory}/${filename}`, template(currentDayEvents.html(), m))
-    if (m.isSame(b, 'day')) {
+    if (m.isSame(YESTERDAY, 'day')) {
       console.log('index', `div#${m.format('YYYY_MMMM_d')}`)
       fs.writeFileSync(`./public/index.html`, template(currentDayEvents.html(), m))
     }
