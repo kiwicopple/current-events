@@ -209,16 +209,15 @@ const template = (content, currentDate) => {
                     </tr>
                     <tr>
                       <td style="font-family:'Avenir','Helvetica Neue',Helvetica,'Lucida Grande',sans-serif; font-size: 14px; vertical-align: top;">
-                        Made by <a href="https://paul.copplest.one" style="text-decoration: none; color: ${LINK_COLOR}; ">kiwicopple</a> to increase the spread of factual news.
+                        Made by <a href="https://twitter.com/kiwicopple" style="text-decoration: none; color: ${LINK_COLOR}; ">kiwicopple</a>.
                       </td>
                     </tr>
                     <tr>
                       <td style="font-family:'Avenir','Helvetica Neue',Helvetica,'Lucida Grande',sans-serif; font-size: 14px; vertical-align: top;">
                         Missed a day? <a href="https://currentevents.email/${moment(currentDate)
                           .subtract(1, 'days')
-                          .format(
-                            'YYYY/MMMM/D'
-                          ).toLowerCase()}" style="text-decoration: none; color:${LINK_COLOR};">See previous → </a>
+                          .format('YYYY/MMMM/D')
+                          .toLowerCase()}" style="text-decoration: none; color:${LINK_COLOR};">See previous → </a>
                       </td>
                     </tr>
                   </table>
