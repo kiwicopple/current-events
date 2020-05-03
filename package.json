@@ -13,6 +13,7 @@
     "@sendgrid/mail": "^7.0.1",
     "cheerio": "^1.0.0-rc.3",
     "html-to-json": "^0.6.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "request": "^2.88.2"
   }
 }
