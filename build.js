@@ -218,7 +218,7 @@ const template = (content, currentDate) => {
                           .subtract(1, 'days')
                           .format(
                             'YYYY/MMMM/D'
-                          )}.html" style="text-decoration: none; color:${LINK_COLOR};">See previous → </a>
+                          ).toLowerCase()}" style="text-decoration: none; color:${LINK_COLOR};">See previous → </a>
                       </td>
                     </tr>
                   </table>
@@ -286,7 +286,7 @@ request(URL_TO_PARSE, async (err, response, body) => {
     let created = await makeDirectory(directory)
     fs.writeFileSync(`${directory}/${filename}`, template(currentDayEvents.html(), m))
     if (m.isSame(YESTERDAY, 'day')) {
-      console.log('index', `div#${m.format('YYYY_MMMM_d')}`)
+      console.log('index', `div#${m.format('YYYY_MMMM_D')}`)
       fs.writeFileSync(`./public/index.html`, template(currentDayEvents.html(), m))
     }
   }
