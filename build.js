@@ -235,7 +235,6 @@ const template = (content, currentDate) => {
                         <a href="https://twitter.com/intent/tweet?url=https://currentevents.email/${moment(
                           currentDate
                         )
-                          .subtract(1, 'days')
                           .format('YYYY/MMMM/D')
                           .toLowerCase()}&text=Today's current events: " target="_blank" style="margin: 0;margin-right:2%;width:98%; display: inline-block; color: #ffffff; background-color: #1DA1F2; border: solid 1px #1DA1F2; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold;  padding: 12px 25px; text-transform: capitalize;">
                             Share on Twitter → 
