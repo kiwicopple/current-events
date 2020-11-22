@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: 'Get Date'
-        run: echo "::set-env name=REPORT_DATE::$(TZ=':Pacific/Samoa' date '+%Y-%m-%d %T')"
+        run: echo "REPORT_DATE==$(TZ=':Pacific/Samoa' date '+%Y-%m-%d %T')"  >> $GITHUB_ENV
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
