@@ -68,6 +68,7 @@ const updateUser = (event) => {
 
   var name = document.querySelector('#name').value
   var subscribed = document.querySelector('#subscribed').value
+  document.querySelector('#update').disabled = true
   supabase
     .from('profiles')
     .update({ first_name: name, subscribed })
@@ -76,6 +77,9 @@ const updateUser = (event) => {
     })
     .catch((err) => {
       alert(err.response.text)
+    })
+    .finally(() => {
+      document.querySelector('#update').disabled = false
     })
 }
 
