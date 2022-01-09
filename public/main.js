@@ -90,7 +90,7 @@ const fetchUser = () => {
       if (response.error) {
         alert(response.error.message)
       }
-      if (response.first_name) {
+      if (response.data.full_name) {
         document.querySelector('#name').value = response.data.full_name
       }
       if (response.data.subscribed !== undefined) {
