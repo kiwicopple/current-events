@@ -82,6 +82,8 @@ const fetchUser = () => {
   supabase
     .from('profiles')
     .select('full_name, subscribed')
+    .eq('id', supabase.auth.user.id)
+    .single()
     .then((response) => {
       console.log('response', response)
       document.querySelector('#name').value = response.data.full_name
