@@ -86,11 +86,14 @@ const fetchUser = () => {
     .single()
     .then((response) => {
       console.log('response', response)
+      if (response.error) {
+        console.log(response.error.message)
+      }
       if (response.first_name) {
         document.querySelector('#name').value = response.data.full_name
+      }
+      if (response.data.subscribed !== undefined) {
         document.querySelector('#subscribed').value = response.data.subscribed
-      } else if (response.error) {
-        console.log(response.error.message)
       }
     })
     .catch((err) => {
