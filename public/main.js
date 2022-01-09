@@ -82,7 +82,7 @@ const fetchUser = () => {
   supabase
     .from('profiles')
     .select('first_name, subscribed')
-    .eq('id', supabase.auth.user.id)
+    .eq('id', supabase.auth.user().id)
     .single()
     .then((response) => {
       console.log('response', response)
