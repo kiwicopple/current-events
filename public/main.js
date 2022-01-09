@@ -34,7 +34,7 @@ const signUpSubmitted = (event) => {
   const email = event.target[0].value
 
   supabase.auth
-    .signUp({ email }, { redirectTo: 'https://currentevents.email/profile' })
+    .signIn({ email }, { redirectTo: 'https://currentevents.email/profile' })
     .then((response) => {
       response.error
         ? alert(response.error.message)
