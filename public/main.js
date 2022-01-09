@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   signUpForm.onsubmit = signUpSubmitted.bind(signUpForm)
 
   var profileForm = document.querySelector('#profile')
-  profileForm.onsubmit = signUpSubmitted.bind(updateUser)
+  profileForm.onsubmit = updateUser.bind(profileForm)
 
   var logoutButton = document.querySelector('#logout')
   logoutButton.onclick = logoutSubmitted.bind(logoutButton)
