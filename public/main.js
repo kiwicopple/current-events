@@ -11,6 +11,7 @@ supabase.auth.onAuthStateChange((event, session) => {
     // set the class of div#sign-up to hidden
     document.querySelector('#sign-up').classList.add('hidden')
     document.querySelector('#profile').classList.remove('hidden')
+    fetchUser()
   }
   if (event == 'SIGNED_OUT') {
     console.log('signed out', session)
@@ -74,5 +75,19 @@ const updateUser = (event) => {
     })
     .catch((err) => {
       alert(err.response.text)
+    })
+}
+
+const fetchUser = () => {
+  supabase
+    .from('profiles')
+    .select('name, subscribed')
+    .then((response) => {
+      console.log('response', response)
+      document.querySelector('#name').value = response.data.name
+      document.querySelector('#subscribed').value = response.data.subscribed
+    })
+    .catch((err) => {
+      console.log(err)
     })
 }
