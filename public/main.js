@@ -90,8 +90,8 @@ const fetchUser = () => {
       if (response.error) {
         alert(response.error.message)
       }
-      if (response.data.full_name) {
-        document.querySelector('#name').value = response.data.full_name
+      if (response.data.first_name) {
+        document.querySelector('#name').value = response.data.first_name
       }
       if (response.data.subscribed !== undefined) {
         document.querySelector('#subscribed').value = response.data.subscribed
