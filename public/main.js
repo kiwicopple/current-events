@@ -67,7 +67,7 @@ const updateUser = (event) => {
   var subscribed = document.querySelector('#subscribed').value
   supabase
     .from('profiles')
-    .update({ full_name: name, subscribed })
+    .update({ first_name: name, subscribed })
     .then((_response) => {
       document.querySelector('#name').value = ''
       document.querySelector('#refresh-token').value = ''
@@ -81,7 +81,7 @@ const updateUser = (event) => {
 const fetchUser = () => {
   supabase
     .from('profiles')
-    .select('full_name, subscribed')
+    .select('first_name, subscribed')
     .eq('id', supabase.auth.user.id)
     .single()
     .then((response) => {
