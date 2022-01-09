@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var signUpForm = document.querySelector('#sign-up')
   signUpForm.onsubmit = signUpSubmitted.bind(signUpForm)
 
+  var profileForm = document.querySelector('#profile')
+  profileForm.onsubmit = signUpSubmitted.bind(updateUser)
+
   var logoutButton = document.querySelector('#logout')
   logoutButton.onclick = logoutSubmitted.bind(logoutButton)
 })
@@ -68,10 +71,8 @@ const updateUser = (event) => {
   supabase
     .from('profiles')
     .update({ first_name: name, subscribed })
-    .then((_response) => {
-      document.querySelector('#name').value = ''
-      document.querySelector('#refresh-token').value = ''
-      alert('Logout successful')
+    .then((response) => {
+      console.log('response', response)
     })
     .catch((err) => {
       alert(err.response.text)
