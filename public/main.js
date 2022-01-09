@@ -9,19 +9,18 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var signUpForm = document.querySelector('#sign-up')
   signUpForm.onsubmit = signUpSubmitted.bind(signUpForm)
 
-  var userDetailsButton = document.querySelector('#update')
-  userDetailsButton.onclick = fetchUserDetails.bind(userDetailsButton)
-
   var logoutButton = document.querySelector('#logout')
   logoutButton.onclick = logoutSubmitted.bind(logoutButton)
 
   supabase.auth.onAuthStateChange((event, session) => {
     if (event == 'SIGNED_IN') {
+      console.log('signed in', session)
       // set the class of div#sign-up to hidden
       document.querySelector('#sign-up').classList.add('hidden')
       document.querySelector('#profile').classList.remove('hidden')
     }
     if (event == 'SIGNED_OUT') {
+      console.log('signed out', session)
       // set the class of div#profile to hidden
       document.querySelector('#sign-up').classList.remove('hidden')
       document.querySelector('#profile').classList.add('hidden')
@@ -75,5 +74,4 @@ const updateUser = (event) => {
     .catch((err) => {
       alert(err.response.text)
     })
-    
 }
