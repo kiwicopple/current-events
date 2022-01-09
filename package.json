@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "node build.js",
-    "send": "node -r dotenv/config send.js"
+    "send": "node -r dotenv/config ses_sendemail.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.0.1",
+    "@supabase/supabase-js": "^1.29.1",
     "aws-sdk": "^2.1053.0",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^10.0.0",
