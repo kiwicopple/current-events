@@ -88,7 +88,7 @@ const fetchUser = () => {
     .then((response) => {
       console.log('response', response)
       if (response.error) {
-        console.log(response.error.message)
+        alert(response.error.message)
       }
       if (response.first_name) {
         document.querySelector('#name').value = response.data.full_name
