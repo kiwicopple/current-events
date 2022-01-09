@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "node build.js",
-    "send": "node send.js"
+    "send": "node -r dotenv/config send.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.0.1",
+    "aws-sdk": "^2.1053.0",
     "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^10.0.0",
     "html-to-json": "^0.6.0",
     "moment": "^2.24.0",
     "request": "^2.88.2"
