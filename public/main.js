@@ -5,32 +5,33 @@ var SUPABASE_ANON_KEY =
 var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 window.userToken = null
 
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event == 'SIGNED_IN') {
+    console.log('signed in', session)
+    // set the class of div#sign-up to hidden
+    document.querySelector('#sign-up').classList.add('hidden')
+    document.querySelector('#profile').classList.remove('hidden')
+  }
+  if (event == 'SIGNED_OUT') {
+    console.log('signed out', session)
+    // set the class of div#profile to hidden
+    document.querySelector('#sign-up').classList.remove('hidden')
+    document.querySelector('#profile').classList.add('hidden')
+  }
+})
+
 document.addEventListener('DOMContentLoaded', function (event) {
   var signUpForm = document.querySelector('#sign-up')
   signUpForm.onsubmit = signUpSubmitted.bind(signUpForm)
 
   var logoutButton = document.querySelector('#logout')
   logoutButton.onclick = logoutSubmitted.bind(logoutButton)
-
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (event == 'SIGNED_IN') {
-      console.log('signed in', session)
-      // set the class of div#sign-up to hidden
-      document.querySelector('#sign-up').classList.add('hidden')
-      document.querySelector('#profile').classList.remove('hidden')
-    }
-    if (event == 'SIGNED_OUT') {
-      console.log('signed out', session)
-      // set the class of div#profile to hidden
-      document.querySelector('#sign-up').classList.remove('hidden')
-      document.querySelector('#profile').classList.add('hidden')
-    }
-  })
 })
 
 const signUpSubmitted = (event) => {
   event.preventDefault()
   const email = event.target[0].value
+  console.log('email', email)
 
   supabase.auth
     .signIn({ email }, { redirectTo: 'https://currentevents.email/profile' })
