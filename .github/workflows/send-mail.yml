@@ -34,4 +34,8 @@ jobs:
           region: us-west-1
           key: ${{ secrets.AWS_KEY }}
           secret: ${{ secrets.AWS_SECRET }}
-      - run: AWS_PROFILE=mail SUPABASE_URL=${{ secrets.SUPABASE_URL }} SUPABASE_SERVICE_KEY=${{ secrets.SUPABASE_SERVICE_KEY }} npm run send
+      - name: Send mail
+        run: AWS_PROFILE=mail npm run send
+        env: 
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }} 
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }} 
