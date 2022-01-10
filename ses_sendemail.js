@@ -7,7 +7,9 @@ const html = fs.readFileSync(__dirname + '/public/index.html', 'utf8')
 var today = moment().subtract(1, 'day')
 
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+const SUPABASE_URL = process.env.SUPABASE_URL.toString().trim()
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY.toString().trim()
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 AWS.config.update({ region: 'us-east-1' })
 
 
