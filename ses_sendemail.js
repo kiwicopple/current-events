@@ -1,6 +1,10 @@
 // Load the AWS SDK for Node.js
 var AWS = require('aws-sdk')
+const moment = require('moment')
 const { createClient } = require('@supabase/supabase-js')
+const fs = require('fs')
+const html = fs.readFileSync(__dirname + '/public/index.html', 'utf8')
+var today = moment().subtract(1, 'day')
 
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -20,29 +24,28 @@ async function sendEmail () {
   // Create sendEmail params
   var params = {
     Destination: {
-      CcAddresses: [],
       ToAddresses,
     },
+    Source,
+    ReplyToAddresses,
     Message: {
       /* required */
       Body: {
         /* required */
         Html: {
           Charset: 'UTF-8',
-          Data: 'HTML_FORMAT_BODY',
+          Data: html,
         },
         Text: {
           Charset: 'UTF-8',
-          Data: 'TEXT_FORMAT_BODY',
+          Data: 'Text not available. See latest current events at https://currentevents.email',
         },
       },
       Subject: {
         Charset: 'UTF-8',
-        Data: 'Test email',
+        Data: `Current Events: ${today.format('dddd DD MMMM YYYY')}`,
       },
     },
-    Source,
-    ReplyToAddresses,
   }
 
   // Create the promise and SES service object
