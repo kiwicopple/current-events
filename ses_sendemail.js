@@ -13,52 +13,57 @@ AWS.config.update({ region: 'us-east-1' })
 
 async function fetchEmails() {
     const { data, error } = await supabase.from('subscribers').select('email')
+    if (error) { throw new Error(error.message) }
     return data.map(x => x.email)
 }
 
 async function sendEmail () {
-  const Source = 'no-reply@currentevents.email'
-  const ReplyToAddresses = ['no-reply@currentevents.email']
-  const ToAddresses = await fetchEmails()
+    try {
+      const Source = 'no-reply@currentevents.email'
+      const ReplyToAddresses = ['no-reply@currentevents.email']
+      const ToAddresses = await fetchEmails()
 
-  // Create sendEmail params
-  var params = {
-    Destination: {
-      ToAddresses,
-    },
-    Source,
-    ReplyToAddresses,
-    Message: {
-      /* required */
-      Body: {
-        /* required */
-        Html: {
-          Charset: 'UTF-8',
-          Data: html,
+      // Create sendEmail params
+      var params = {
+        Destination: {
+          ToAddresses,
         },
-        Text: {
-          Charset: 'UTF-8',
-          Data: 'Text not available. See latest current events at https://currentevents.email',
+        Source,
+        ReplyToAddresses,
+        Message: {
+          /* required */
+          Body: {
+            /* required */
+            Html: {
+              Charset: 'UTF-8',
+              Data: html,
+            },
+            Text: {
+              Charset: 'UTF-8',
+              Data: 'Text not available. See latest current events at https://currentevents.email',
+            },
+          },
+          Subject: {
+            Charset: 'UTF-8',
+            Data: `Current Events: ${today.format('dddd DD MMMM YYYY')}`,
+          },
         },
-      },
-      Subject: {
-        Charset: 'UTF-8',
-        Data: `Current Events: ${today.format('dddd DD MMMM YYYY')}`,
-      },
-    },
-  }
+      }
 
-  // Create the promise and SES service object
-  var sendPromise = new AWS.SES({ apiVersion: '2010-12-01' }).sendEmail(params).promise()
+      // Create the promise and SES service object
+      var sendPromise = new AWS.SES({ apiVersion: '2010-12-01' }).sendEmail(params).promise()
 
-  // Handle promise's fulfilled/rejected states
-  sendPromise
-    .then(function (data) {
-      console.log(data.MessageId)
-    })
-    .catch(function (err) {
-      console.error(err, err.stack)
-    })
+      // Handle promise's fulfilled/rejected states
+      sendPromise
+        .then(function (data) {
+          console.log(data.MessageId)
+        })
+        .catch(function (err) {
+          console.error(err, err.stack)
+        })
+    } catch (error) {
+        console.log('error.message', error.message)
+    }
 }
 
 sendEmail()
