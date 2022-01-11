@@ -3,7 +3,8 @@ const cheerio = require('cheerio')
 const moment = require('moment')
 const fs = require('fs')
 const LINK_COLOR = '#2a2a8d'
-const SUBSCRIBE_LINK = 'https://cdn.forms-content.sg-form.com/d622e40e-8702-11ea-a43d-4eea9c5a99b3'
+const SUBSCRIBE_LINK = 'https://currentevents.email/profile'
+const UNSUBSCRIBE_LINK = 'https://currentevents.email/profile'
 
 const YESTERDAY = moment().subtract(1, 'day')
 const currentMonth = YESTERDAY.format('MMMM_YYYY')
@@ -243,6 +244,11 @@ const template = (content, currentDate) => {
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: ${LINK_COLOR}; border-radius: 5px; text-align: center;"> 
                         <a href="${SUBSCRIBE_LINK}" target="_blank" style="margin: 0;margin-left:2%;width:98%;display: inline-block; color: #ffffff; background-color: ${LINK_COLOR}; border: solid 1px ${LINK_COLOR}; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; padding: 12px 25px; text-transform: capitalize;">
                             Like this? Subscribe → 
+                        </a> 
+                    </td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: ${LINK_COLOR}; border-radius: 5px; text-align: center;"> 
+                        <a href="${UNSUBSCRIBE_LINK}" target="_blank" style="margin: 0;margin-left:2%;width:98%;display: inline-block; color: #ffffff; background-color: ${LINK_COLOR}; border: solid 1px ${LINK_COLOR}; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; padding: 12px 25px; text-transform: capitalize;">
+                            Unsubscribe → 
                         </a> 
                     </td>
                 </tr>
