@@ -24,12 +24,12 @@ async function sendEmail() {
     // const Source = 'no-reply@currentevents.email'
     const Source = 'Current Events <no-reply@currentevents.email>'
     const ReplyToAddresses = ['no-reply@currentevents.email']
-    const ToAddresses = await fetchEmails()
+    const BccAddresses = await fetchEmails()
 
     // Create sendEmail params
     var params = {
       Destination: {
-        ToAddresses,
+        BccAddresses,
       },
       Source,
       ReplyToAddresses,
