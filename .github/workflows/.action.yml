@@ -14,7 +14,7 @@ jobs:
         run: echo "REPORT_DATE==$(TZ=':Pacific/Samoa' date '+%Y-%m-%d %T')"  >> $GITHUB_ENV
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '16.x'
       - run: npm install
       - run: npm run build --if-present
       - name: Commit files
