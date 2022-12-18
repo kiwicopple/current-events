@@ -242,7 +242,7 @@ const template = (content, currentDate) => {
                         </a> 
                     </td>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: ${LINK_COLOR}; border-radius: 5px; text-align: center;"> 
-                        <a href="${SUBSCRIBE_LINK}" target="_blank" style="margin: 0;margin-left:2%;width:98%;display: inline-block; color: #ffffff; background-color: ${LINK_COLOR}; border: solid 1px ${LINK_COLOR}; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; padding: 12px 25px; text-transform: capitalize;">
+                        <a href="${SUBSCRIBE_LINK}" target="_blank" style="margin: 0;margin-left:2%;margin-right:2%;width:98%;display: inline-block; color: #ffffff; background-color: ${LINK_COLOR}; border: solid 1px ${LINK_COLOR}; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; padding: 12px 25px; text-transform: capitalize;">
                             Like this? Subscribe → 
                         </a> 
                     </td>
