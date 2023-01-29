@@ -9,10 +9,10 @@ jobs:
   send:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: 'Get Date'
         run: echo "REPORT_DATE==$(TZ=':Pacific/Samoa' date '+%Y-%m-%d %T')"  >> $GITHUB_ENV
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - run: npm install
