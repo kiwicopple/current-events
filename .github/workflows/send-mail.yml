@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
       - name: 'Get Date'
         run: echo "REPORT_DATE==$(TZ=':Pacific/Samoa' date '+%Y-%m-%d %T')"  >> $GITHUB_ENV
       - uses: actions/setup-node@v3
@@ -27,6 +30,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.CURRENT_EVENTS_TOKEN }}
+          branch: ${{ github.head_ref }}
       - name: AWS Profile
         uses: Fooji/create-aws-profile-action@v1
         with:
